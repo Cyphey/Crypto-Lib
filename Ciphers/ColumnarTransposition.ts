@@ -22,7 +22,7 @@ export const ColumnarTranspositionEncipher: Function = (alphabetsHandler: Alphab
     let KeywordArray: string[][] = [];
     for (let i = 0; i < inputKeyWord.length; i++)    KeywordArray.push([]);
     inputPlain.forEach((character, index) => KeywordArray[index % inputKeyWord.length].push(character));
-    KeywordArray.forEach((value) => {
+    KeywordArray.forEach((value, index) => {
         if (value.length != KeywordArray[0].length)
             value.push(padding);
     });

@@ -11,6 +11,7 @@ export interface Alphabet_Map
 export class AlphabetsHandler
 {
     public alphabets: Map<string, Map<number, string[]>> = new Map();
+    public TabularRectas: Map<string, Map<number, string[]>> = new Map();
 
     constructor()
     {
@@ -95,5 +96,20 @@ export class AlphabetsHandler
             index++;
         }
         return MissingAlphabetCharacterMap;
+    }
+
+    constructTabularRecta(alphabetKey: string)
+    {
+        if (!this.alphabets.has(alphabetKey))   return errorCodes.EINVAL;
+        const alphabet: Map<number, string[]> = this.alphabets.get(alphabetKey)!;
+        this.TabularRectas.set("EnglishAlphabet", new Map());
+        let tabularRecta: Map<number, string[]> = this.TabularRectas.get(alphabetKey)!;
+        for (let [key, values] of alphabet)
+        {
+            tabularRecta.set(key, []);
+            for (let [nest_key, nest_values] of alphabet)
+                tabularRecta.get(key)?.push(nest_values[0]);
+        }
+        console.log(tabularRecta);
     }
 }

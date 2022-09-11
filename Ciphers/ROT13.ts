@@ -9,7 +9,8 @@ export const ROT13Encipher: Function = (alphabetsHandler: AlphabetsHandler, key:
     let cipher: string[] = [];
     (input).forEach((character, index) => {
         const code: Alphabet_Map = CharacterMap[index];
-        cipher.push(code.key > -1 ? alphabet.get((code.key + 13) % alphabet.size)?.[code.index]! : character);
+        // cipher.push(code.key > -1 ? alphabet.get((code.key + 13) % alphabet.size)?.[code.index]! : character);
+        cipher.push(code.key > -1 ? alphabet.get((code.key + 13) % alphabet.size)?.[code.index]! : '');
     });
     return cipher.join('');
 }

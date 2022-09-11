@@ -9,7 +9,8 @@ export const CeasarEncipher: Function = (alphabetsHandler: AlphabetsHandler, key
     let cipher: string[] = [];
     (input).forEach((character, index) => {
         const code: Alphabet_Map = CharacterMap[index];
-        cipher?.push(code.key > -1 ? alphabet.get((code.key + offset) % alphabet.size)?.[code.index]! : character);
+        // cipher?.push(code.key > -1 ? alphabet.get((code.key + offset) % alphabet.size)?.[code.index]! : character);
+        cipher?.push(code.key > -1 ? alphabet.get((code.key + offset) % alphabet.size)?.[code.index]! : '');
     });
     return cipher.join('');
 }
@@ -22,7 +23,8 @@ export const CeasarDecipher: Function = (alphabetsHandler: AlphabetsHandler, key
     const plain: string[] = [];
     input.forEach((character, index) => {
         const code = CharacterMap[index];
-        plain.push(code.key > -1 ? alphabet.get(((code.key - offset) % alphabet.size + alphabet.size) % alphabet.size)?.[code.index]! : character);
+        // plain.push(code.key > -1 ? alphabet.get(((code.key - offset) % alphabet.size + alphabet.size) % alphabet.size)?.[code.index]! : character);
+        plain.push(code.key > -1 ? alphabet.get(((code.key - offset) % alphabet.size + alphabet.size) % alphabet.size)?.[code.index]! : '');
     });
     return plain.join('');
 }

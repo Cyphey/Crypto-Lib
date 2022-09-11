@@ -62,8 +62,8 @@ export const PolybiusSquareEncipher: Function = (alphabetsHandler: AlphabetsHand
         const headingArray: string[] = [heading[Math.floor((<Map<string, number>>polybiusSquareKeyMap).get(input[index])! / heading.length)], heading[Math.floor((<Map<string, number>>polybiusSquareKeyMap).get(input[index])! % heading.length)]];
         if ((<Map<string, number>>polybiusSquareKeyMap).has(character))
             cipher.push(...headingArray);
-        else
-            cipher.push(character);
+        // else
+        //     cipher.push(character);
     });
     return cipher.join('');
 }

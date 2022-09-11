@@ -18,14 +18,17 @@ export const RailFenceEncipher: Function = (alphabetsHandler: AlphabetsHandler, 
             if (rail === row -1 || rail === 0)  direction = -direction;
         }
     }
-    let tempCipher: string = '';
-    for (let rail of fence) tempCipher += rail.join('');
-    let cipher: string[] = tempCipher.split('');
-    input.forEach((character, index) => {
-        if (CharacterMap[index].key == -1)
-            cipher.splice(index, 0, input[index]);
-    });
-    return cipher.join('');
+    // let tempCipher: string = '';
+    // for (let rail of fence) tempCipher += rail.join('');
+    // let cipher: string[] = tempCipher.split('');
+    // input.forEach((character, index) => {
+    //     if (CharacterMap[index].key == -1)
+    //         cipher.splice(index, 0, input[index]);
+    // });
+    // return cipher.join('');
+    let cipher: string = '';
+    for (let rail of fence) cipher += rail.join('');
+    return cipher;
 }
 
 export const RailFenceDecipher: Function = (alphabetsHandler: AlphabetsHandler, key: string, row: number = 1, input: string[]): string | number =>
@@ -63,9 +66,9 @@ export const RailFenceDecipher: Function = (alphabetsHandler: AlphabetsHandler, 
 		rail += direction;
 		if (rail === row - 1 || rail === 0) direction = -direction;
 	}
-    input.forEach((character, index) => {
-        if (CharacterMap[index].key == -1)
-            plain.splice(index, 0, input[index]);
-    });
+    // input.forEach((character, index) => {
+    //     if (CharacterMap[index].key == -1)
+    //         plain.splice(index, 0, input[index]);
+    // });
 	return plain.join('');
 }

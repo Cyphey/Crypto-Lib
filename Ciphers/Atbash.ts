@@ -10,7 +10,8 @@ export const AtbashEncipher: Function = (alphabetsHandler: AlphabetsHandler, key
 
     input.forEach((character, index) => {
         const code = CharacterMap[index];
-        cipher.push(code.key > -1 ? alphabet.get(alphabet.size - code.key - 1)?.[code.index]! : character);
+        // cipher.push(code.key > -1 ? alphabet.get(alphabet.size - code.key - 1)?.[code.index]! : character);
+        cipher.push(code.key > -1 ? alphabet.get(alphabet.size - code.key - 1)?.[code.index]! : '');
     });
     return cipher.join('');
 }

@@ -10,7 +10,8 @@ export const AffineEncipher: Function = (alphabetsHandler: AlphabetsHandler, key
     let cipher: string[] = [];
     input.forEach((character, index) => {
         const code = CharacterMap[index];
-        cipher.push((<Alphabet_Map>code).key > -1 ? alphabet.get((alpha * code.key + beta) % alphabet.size)?.[code.index]! : character);
+        // cipher.push((<Alphabet_Map>code).key > -1 ? alphabet.get((alpha * code.key + beta) % alphabet.size)?.[code.index]! : character);
+        cipher.push((<Alphabet_Map>code).key > -1 ? alphabet.get((alpha * code.key + beta) % alphabet.size)?.[code.index]! : '');
     });
     return cipher.join('');
 }
@@ -24,7 +25,8 @@ export const AffineDecipherKnownKey: Function = (alphabetsHandler: AlphabetsHand
     let plain: string[] = [];
     input.forEach((character, index) => {
         const code = CharacterMap[index];
-        plain.push((<Alphabet_Map>code).key > -1 ? alphabet.get(((alphaMultiplicativeInverse * (code.key - beta)) % alphabet.size + alphabet.size) % alphabet.size)?.[code.index]! : character);
+        // plain.push((<Alphabet_Map>code).key > -1 ? alphabet.get(((alphaMultiplicativeInverse * (code.key - beta)) % alphabet.size + alphabet.size) % alphabet.size)?.[code.index]! : character);
+        plain.push((<Alphabet_Map>code).key > -1 ? alphabet.get(((alphaMultiplicativeInverse * (code.key - beta)) % alphabet.size + alphabet.size) % alphabet.size)?.[code.index]! : '');
     });
     return plain.join('');
 }
